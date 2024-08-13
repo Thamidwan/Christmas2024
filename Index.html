@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a class="logo" href="#"><img src="./Assests/logo.png" alt="logo" height="60px"></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#welcome-section">Home</a></li>
+                <li><a href="#lineup-section">LineUp</a></li>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#gallery-slider">Gallery</a></li>
+            </ul>
+        </nav>
+        <p class="menu cta">Menu</p>
+    </header>
+
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#welcome-section">Home</a>
+            <a href="#lineup-section">LineUp</a>
+            <a href="#about-section">About</a>
+            <a href="#gallery-slider">Gallery</a>
+        </div>
+    </div>
+
+    <!-- Welcome page -->
+    <section id="welcome-section" class="welcome-section">
+        <img src="./Assests/exploion.gif" alt="Logo" class="years-gif">
+        <img src="./Assests/4ronaLogo.png" alt="Logo" class="logo">
+        <h1>Welcome To Christmas Explosion 2024</h1>
+        <img src="./Assests/landing.jpeg" alt="Welcome Image">
+        <br><br>
+        <button>Buy Ticket</button>
+    </section>
+    <!-- Welcome page End -->
+
+    <!-- Timer -->
+    <div class="main">
+        <h1>CountDown to Explosion 2024</h1>
+        <div class="countdown">
+            <div>
+                <span class="number months"></span>
+                <span>Months</span>
+            </div>
+            <div>
+                <span class="number days"></span>
+                <span>Days</span>
+            </div>
+            <div>
+                <span class="number hours"></span>
+                <span>Hours</span>
+            </div>
+            <div>
+                <span class="number minutes"></span>
+                <span>Minutes</span>
+            </div>
+        </div>
+
+        <section id="lineup-section" class="lineup-section">
+            <h1>Event Lineup</h1>
+            <img src="./Assests/giphy.gif" alt="Lineup Image">
+            <p>
+                Get ready for an unforgettable experience! The Christmas Explosion 2024 features a lineup of world-class performers,
+                including top musicians and entertainers. Check out the schedule and be part of the excitement!
+            </p>
+        </section>
+
+        <section id="about-section" class="about-section">
+            <h1>About the Event</h1>
+            <p>
+                The Christmas Explosion 2024 is a spectacular celebration filled with joy, music, and dazzling performances. This event
+                brings together people from all walks of life to share in the holiday spirit and create unforgettable memories. Watch the
+                video below to get a glimpse of what to expect!
+            </p>
+            <video controls>
+                <source src="./Assests/2023video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section id="gallery-slider" class="gallery-slider">
+            <h1>Gallery</h1>
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide"><img src="./Assests/pic1.jpg" alt="Picture 1"></div>
+                    <div class="slide"><img src="./Assests/pic2.jpg" alt="Picture 2"></div>
+                    <div class="slide"><img src="./Assests/pic3.jpg" alt="Picture 3"></div>
+                    <div class="slide"><img src="./Assests/pic4.jpg" alt="Picture 4"></div>
+                    <div class="slide"><img src="./Assests/pic5.jpg" alt="Picture 5"></div>
+                    <!-- Add more slides as needed -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Main End -->
+
+    <!-- JS Start -->
+    <script src="script.js"></script>
+    <!-- JS End -->
+</body>
+</html>
