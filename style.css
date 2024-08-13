@@ -183,7 +183,7 @@ div span:last-of-type{
 
 @media screen and (max-width:600px){
   h1{
-    font-size: medium;
+    font-size: 2rem;
   }
   
   .countdown{
@@ -394,7 +394,7 @@ h1{
 
 @media (max-width: 480px) {
   .about-section h1 {
-      font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .about-section p {
