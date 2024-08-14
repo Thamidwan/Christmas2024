@@ -11,32 +11,31 @@ menuClose.addEventListener("click", () => {
   overlay.classList.remove("overlay--active");
 });
 
+// My next birthday
+const targetDate = new Date('2024-12-25T00:00:00').getTime(); // Use ISO format
 
-// my next birthday
-const newDate = new Date('12-25-2024 00:00:00').getTime()
-const countdown = setInterval(() =>{
-  
-const date = new Date().getTime()
-const diff = newDate - date
+const countdown = setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
 
-const month =  Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12) * 365)) / (1000 * 60 * 60 * 24 * (365.25 / 12)))
-const days = Math.floor(diff % (1000 * 60 * 60 * 24 * (365.25 / 12)) / (1000 * 60 * 60 * 24))
-const hours =  Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+  // Time calculations
+  const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+  const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
+  // Update the HTML
+  doc.querySelector(".months").innerHTML = months < 10 ? '0' + months : months;
+  doc.querySelector(".days").innerHTML = days < 10 ? '0' + days : days;
+  doc.querySelector(".hours").innerHTML = hours < 10 ? '0' + hours : hours;
+  doc.querySelector(".minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;
 
-     
-      document.querySelector(".minutes").innerHTML = minutes < 10 ? '0' + minutes :minutes
-      document.querySelector(".hours").innerHTML = hours < 10 ? '0' + hours : hours
-      document.querySelector(".days").innerHTML = days < 10 ? '0' + days : days
-      document.querySelector(".months").innerHTML = month < 10 ? '0' + month : month
-
-if(diff <= 0){
-  clearInterval(countdown)
-        document.querySelector(".countdown").innerHTML = 'Merry Christmas'
-}
-
-}, 1000)
+  // If the countdown is over
+  if (diff <= 0) {
+    clearInterval(countdown);
+    doc.querySelector(".countdown").innerHTML = 'Merry Christmas';
+  }
+}, 1000); // Update every second
 
 
 
