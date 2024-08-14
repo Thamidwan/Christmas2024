@@ -455,3 +455,48 @@ h1{
   }
 }
 
+.footer {
+  background-color: deeppink;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0 15px;
+  color: white;
+  font-size: 25px;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #1da1f2; /* Change to any color you like on hover */
+}
+
+.social-icons {
+  
+  padding: 20px;
+  text-align: center;
+}
+
+.social-icons a {
+  border: 1px solid deeppink;
+  background-color: deeppink;
+  margin: 0 15px;
+  padding: 10px;
+  border-radius: 50%;
+  color: pink;
+  font-size: 40px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff69b4; /* Lighter pink color on hover */
+}
+
+h2{
+  color: deeppink;
+  padding: 10px;
+  font-weight: 600;
+}
+
+
