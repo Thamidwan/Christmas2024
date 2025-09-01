@@ -3,132 +3,1081 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Christmas Explosion 2024 - Premium Holiday Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff1493;
+            --deep-pink: deeppink;
+            --secondary-blue: #0088a9;
+            --dark-blue: #2C4A64;
+            --light-pink: #ff69b4;
+            --gold-accent: #CAA78C;
+            --cream: #f9f9f9;
+            --dark-text: #2C4A64;
+            --light-text: #666666;
+            --white: #FFFFFF;
+            --gradient-bg: linear-gradient(135deg, deeppink 0%, #ff1493 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--deep-pink);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: var(--deep-pink);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 50px;
+            filter: brightness(1.2);
+        }
+
+        .nav__links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav__links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+
+        .nav__links a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .cta-button {
+            background: var(--secondary-blue);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 136, 169, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 136, 169, 0.4);
+        }
+
+        /* Mobile Navigation */
+        .menu {
+            display: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--gradient-bg);
+            transition: left 0.5s ease;
+            z-index: 1001;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+
+        .overlay--active {
+            left: 0;
+        }
+
+        .overlay__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .overlay__content a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .overlay__content a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            min-height: 600px; /* Ensure it doesn't get too small on mobile */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ff1493" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23CAA78C" opacity="0.3"/><circle cx="900" cy="600" r="150" fill="%23CAA78C" opacity="0.2"/><rect x="0" y="700" width="1200" height="100" fill="%23f9f9f9"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--gold-accent);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 3vw, 1.125rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-bg);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 15px 30px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-accent);
+            color: var(--dark-text);
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            padding: 80px 20px;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--deep-pink);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-blue);
+            border-radius: 2px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .countdown-item {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-width: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--deep-pink);
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            color: var(--light-text);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 20px;
+        }
+
+        .content-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--light-text);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 20px;
+            background: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .gallery-section .section-title {
+            color: var(--white);
+        }
+
+        .gallery-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 400px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold-accent);
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 60px 20px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .social-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-pink);
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-pink);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Touch-friendly button styles */
+        button, .btn-primary, .btn-secondary, .cta-button, .social-icon {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav__links {
+                gap: 25px;
+            }
+            
+            .countdown {
+                gap: 20px;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 25px 15px;
+            }
+            
+            .countdown-number {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav__links {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .countdown {
+                gap: 15px;
+            }
+
+            .countdown-item {
+                min-width: 90px;
+                padding: 20px 15px;
+            }
+
+            .countdown-number {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                padding: 12px 25px;
+            }
+            
+            .hero-section {
+                padding-top: 70px; /* Add padding to account for fixed header */
+            }
+            
+            .content-section, .countdown-section, .gallery-section, .social-section {
+                padding: 60px 20px;
+            }
+            
+            .slide {
+                height: 300px;
+            }
+            
+            .section-description {
+                font-size: 16px;
+            }
+            
+            .footer-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 12px 4%;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .countdown {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .countdown-item {
+                width: calc(50% - 10px);
+                max-width: none;
+                min-width: auto;
+                padding: 15px 10px;
+            }
+            
+            .countdown-number {
+                font-size: 32px;
+            }
+            
+            .countdown-label {
+                font-size: 12px;
+            }
+
+            .social-icons {
+                gap: 15px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .hero-title {
+                margin-bottom: 15px;
+            }
+            
+            .hero-subtitle {
+                margin-bottom: 20px;
+            }
+            
+            .hero-description {
+                margin-bottom: 30px;
+            }
+            
+            .slide {
+                height: 250px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer p {
+                font-size: 14px;
+            }
+            
+            .overlay__content a {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .countdown-item {
+                width: calc(50% - 5px);
+                padding: 12px 8px;
+            }
+            
+            .countdown-number {
+                font-size: 28px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Prevent horizontal scrolling */
+        body, html {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Improve touch targets for mobile */
+        .nav__links a, .overlay__content a, .footer-links a {
+            padding: 5px 0;
+        }
+        
+        .dot {
+            width: 14px;
+            height: 14px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a class="logo" href="#"><img src="./Assests/logo.png" alt="logo" height="60px"></a>
+    <header id="header">
+        <a class="logo" href="#hero">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><text x='50' y='35' text-anchor='middle' fill='%23CAA78C' font-family='serif' font-size='24' font-weight='bold'>CE</text><text x='50' y='50' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-size='8'>2024</text></svg>" alt="Christmas Explosion 2024">
+        </a>
         <nav>
             <ul class="nav__links">
-                <li><a href="#welcome-section">Home</a></li>
-                <li><a href="#lineup-section">LineUp</a></li>
-                <li><a href="#about-section">About</a></li>
-                <li><a href="#gallery-slider">Gallery</a></li>
-                <li><a href="#social-icons">Get In Touch</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#countdown">Countdown</a></li>
+                <li><a href="#lineup">Lineup</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <p class="menu cta">Menu</p>
+        <a href="#tickets" class="cta-button">Get Tickets</a>
+        <div class="menu">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
 
-    <div class="overlay">
-        <a class="close">&times;</a>
+    <div class="overlay" id="overlay">
+        <div class="close" id="closeMenu">&times;</div>
         <div class="overlay__content">
-            <a href="#welcome-section">Home</a>
-            <a href="#lineup-section">LineUp</a>
-            <a href="#about-section">About</a>
-            <a href="#gallery-slider">Gallery</a>
-            <li><a href="#social-icons">Get In Touch</a></li>
+            <a href="#hero">Home</a>
+            <a href="#countdown">Countdown</a>
+            <a href="#lineup">Lineup</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 
-    <!-- Welcome page -->
-    <section id="welcome-section" class="welcome-section">
-        <img src="./Assests/exploion.gif" alt="Logo" class="years-gif">
-        <img src="./Assests/4ronaLogo.png" alt="Logo" class="logo">
-        <h1>Welcome To Christmas Explosion 2024</h1>
-        <img src="./Assests/landing.jpeg" alt="Welcome Image">
-        <br><br>
-        <button>Buy Ticket</button>
-    </section>
-    <!-- Welcome page End -->
-
-    <!-- Timer -->
-    <div class="main">
-        <h1>CountDown to Explosion 2024</h1>
-        <div class="countdown">
-            <div>
-                <span class="number months"></span>
-                <span>Months</span>
-            </div>
-            <div>
-                <span class="number days"></span>
-                <span>Days</span>
-            </div>
-            <div>
-                <span class="number hours"></span>
-                <span>Hours</span>
-            </div>
-            <div>
-                <span class="number minutes"></span>
-                <span>Minutes</span>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Christmas Explosion 2024</h1>
+            <p class="hero-subtitle">The Ultimate Holiday Celebration</p>
+            <p class="hero-description">
+                Join us for an unforgettable evening of music, joy, and holiday magic. 
+                Experience world-class performances, festive atmosphere, and memories that will last a lifetime.
+            </p>
+            <div class="hero-buttons">
+                <a href="#tickets" class="btn-primary">
+                    <i class="fas fa-ticket-alt"></i> Buy Tickets
+                </a>
+                <a href="#about" class="btn-secondary">
+                    <i class="fas fa-play"></i> Learn More
+                </a>
             </div>
         </div>
+    </section>
 
-        <section id="lineup-section" class="lineup-section">
-            <h1>Event Lineup</h1>
-            <img src="./Assests/giphy.gif" alt="Lineup Image">
-            <p>
-                Get ready for an unforgettable experience! The Christmas Explosion 2024 features a lineup of world-class performers,
-                including top musicians and entertainers. Check out the schedule and be part of the excitement!
-            </p>
-        </section>
-
-        <section id="about-section" class="about-section">
-            <h1>About the Event</h1>
-            <p>
-                The Christmas Explosion 2024 is a spectacular celebration filled with joy, music, and dazzling performances. This event
-                brings together people from all walks of life to share in the holiday spirit and create unforgettable memories. Watch the
-                video below to get a glimpse of what to expect!
-            </p>
-            <video controls>
-                <source src="./Assests/2023video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </section>
-
-        <section id="gallery-slider" class="gallery-slider">
-            <h1>Gallery</h1>
-            <div class="slider">
-                <div class="slides">
-                    <div class="slide"><img src="./Assests/pic1.jpg" alt="Picture 1"></div>
-                    <div class="slide"><img src="./Assests/pic2.jpg" alt="Picture 2"></div>
-                    <div class="slide"><img src="./Assests/pic3.jpg" alt="Picture 3"></div>
-                    <div class="slide"><img src="./Assests/pic4.jpg" alt="Picture 4"></div>
-                    <div class="slide"><img src="./Assests/pic5.jpg" alt="Picture 5"></div>
-                    <!-- Add more slides as needed -->
+    <!-- Countdown Section -->
+    <section id="countdown" class="countdown-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Countdown to Christmas Explosion</h2>
+            <div class="countdown">
+                <div class="countdown-item scroll-reveal">
+                    <span class="countdown-number months">00</span>
+                    <span class="countdown-label">Months</span>
+                </div>
+                <div class="countdown-item scroll-reveal">
+                    <span class="countdown-number days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item scroll-reveal">
+                    <span class="countdown-number hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item scroll-reveal">
+                    <span class="countdown-number minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
                 </div>
             </div>
-            <h2>Follow us here for More Content</h2>
-            <section class="social-icons" id="social-icons">
-                
-                <a href="https://www.tiktok.com" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com" target="_blank">
+        </div>
+    </section>
+
+    <!-- Lineup Section -->
+    <section id="lineup" class="content-section">
+        <div class="container">
+            <div class="section-content scroll-reveal">
+                <h2 class="section-title">Spectacular Lineup</h2>
+                <p class="section-description">
+                    Prepare for an extraordinary evening featuring world-renowned artists, breathtaking performances, 
+                    and surprise guests. Our carefully curated lineup promises to deliver an unforgettable experience 
+                    that captures the true spirit of the holiday season.
+                </p>
+                <div style="width: 100%; height: 300px; background: linear-gradient(45deg, deeppink, #CAA78C); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold; margin: 20px 0;">
+                    ✨ Artist Lineup Coming Soon ✨
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="section-content scroll-reveal">
+                <h2 class="section-title">About the Event</h2>
+                <p class="section-description">
+                    Christmas Explosion 2024 is more than just an event—it's a celebration that brings together 
+                    families, friends, and communities in the spirit of joy and togetherness. Our spectacular 
+                    production features state-of-the-art lighting, premium sound systems, and an atmosphere 
+                    designed to create magical memories.
+                </p>
+                <div class="video-container">
+                    <video controls poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><rect fill='%23ff1493' width='800' height='450'/><circle cx='400' cy='225' r='50' fill='white'/><polygon points='385,210 385,240 410,225' fill='%23ff1493'/><text x='400' y='300' text-anchor='middle' fill='white' font-size='24'>Christmas Explosion 2023 Highlights</text></svg>">
+                        <source src="#" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Event Gallery</h2>
+            <div class="gallery-slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23ff1493' width='800' height='400'/><circle cx='200' cy='100' r='50' fill='%23CAA78C'/><circle cx='600' cy='300' r='70' fill='%23CAA78C'/><text x='400' y='200' text-anchor='middle' fill='white' font-size='32'>Gallery Image 1</text></svg>" alt="Christmas Explosion Gallery 1">
+                    </div>
+                    <div class="slide">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%232C4A64' width='800' height='400'/><circle cx='150' cy='200' r='60' fill='%23CAA78C'/><circle cx='650' cy='200' r='80' fill='%23ff1493'/><text x='400' y='200' text-anchor='middle' fill='white' font-size='32'>Gallery Image 2</text></svg>" alt="Christmas Explosion Gallery 2">
+                    </div>
+                    <div class="slide">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23f9f9f9' width='800' height='400'/><circle cx='400' cy='100' r='40' fill='%23CAA78C'/><circle cx='300' cy='300' r='60' fill='%23ff1493'/><circle cx='500' cy='300' r='60' fill='%23ff1493'/><text x='400' y='200' text-anchor='middle' fill='%232C4A64' font-size='32'>Gallery Image 3</text></svg>" alt="Christmas Explosion Gallery 3">
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="contact" class="social-section">
+        <div class="container scroll-reveal">
+            <h2 class="social-title">Stay Connected</h2>
+            <p class="section-description">Follow us for exclusive updates, behind-the-scenes content, and special announcements</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com" target="_blank">
+                <a href="https://www.instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-            </section>
-            
-        </section>
-      <div class="footer">
-          <p>&COPY;Christmas Explosion 2024 </p>
-       </div>
+                <a href="https://www.tiktok.com" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
         </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#support">Support</a>
+                <a href="#press">Press</a>
+            </div>
+            <p>&copy; 2024 Christmas Explosion. All rights reserved. | Designed for an unforgettable experience</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuOpen = document.querySelector('.menu');
+        const menuClose = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuOpen.addEventListener('click', () => {
+            overlay.classList.add('overlay--active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        menuClose.addEventListener('click', () => {
+            overlay.classList.remove('overlay--active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.overlay__content a').forEach(link => {
+            link.addEventListener('click', () => {
+                overlay.classList.remove('overlay--active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown Timer
+        const targetDate = new Date('2024-12-25T00:00:00').getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.querySelector('.months').textContent = months.toString().padStart(2, '0');
+            document.querySelector('.days').textContent = days.toString().padStart(2, '0');
+            document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+            document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+
+            if (diff <= 0) {
+                clearInterval(countdown);
+                document.querySelector('.countdown').innerHTML = '<h2 style="color: deeppink; font-size: 3rem;">🎄 Merry Christmas! 🎄</h2>';
+            }
+        }, 1000);
+
+        // Gallery Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            const slider = document.querySelector('.slides');
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides
+        let slideInterval = setInterval(nextSlide, 4000);
+
+        // Pause auto-advancement when user interacts with slider
+        const gallerySlider = document.querySelector('.gallery-slider');
+        gallerySlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        gallerySlider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 4000);
+        });
+
+        // Touch events for mobile slider
+        let touchStartX = 0;
+        let touchEndX = 0;
         
-    
-    </div>
+        gallerySlider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(slideInterval);
+        }, false);
 
-   
-    <!-- Main End -->
+        gallerySlider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            slideInterval = setInterval(nextSlide, 4000);
+        }, false);
 
-    <!-- JS Start -->
-    <script src="script.js"></script>
-    <!-- JS End -->
+        function handleSwipe() {
+            const minSwipeDistance = 50; // Minimum distance for a swipe to be registered
+            if (touchStartX - touchEndX > minSwipeDistance) {
+                // Swipe left - next slide
+                nextSlide();
+            } else if (touchEndX - touchStartX > minSwipeDistance) {
+                // Swipe right - previous slide
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                // Reset the auto-advance timer
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 4000);
+            });
+        });
+
+        // Scroll reveal animation
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-reveal');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Smooth scrolling for navigation links with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                // Calculate the scroll position with offset for header height
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL hash without scrolling
+                if (history.pushState) {
+                    history.pushState(null, null, targetId);
+                } else {
+                    location.hash = targetId;
+                }
+            });
+        });
+
+        // Prevent default on touch events to avoid delays
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
 </body>
 </html>
